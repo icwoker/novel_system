@@ -16,7 +16,7 @@ class User(Base):
     subscription_tier = Column(String,default='Free')
     balance = Column(Integer,default=0)
     created_at = Column(TIMESTAMP,default=func.now())
-    updated_at = Column(TIMESTAMP,default=func.now())
+    updated_at = Column(TIMESTAMP, default=func.now(), onupdate=func.now())
     
     __table_args__ = (
         CheckConstraint("subscription_tier IN ('Free', 'Pro')", name='valid_subscription_tier'),
